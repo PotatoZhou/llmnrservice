@@ -1,28 +1,23 @@
-import { router } from 'expo-router';
 import React, { useState } from "react";
 import {
-  Image,
-  SafeAreaView,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View
+    Image,
+    SafeAreaView,
+    StyleSheet,
+    Text,
+    TouchableOpacity,
+    View
 } from "react-native";
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 
 export default function Index() {
   const [login, setLogin] = useState(false);
-  const showDetail = () => {
-    console.log('router---->', router);
-    router.push('detailFrame');
-  }
   return (
     <>
       {login ? 
       (<></>) 
       : (
       <>
-        <SafeAreaView style={{ flex: 1, backgroundColor: '#000000', height: '100%' }}>
+        <SafeAreaView style={{ flex: 1, backgroundColor: '#000000' }}>
           <View style={styles.container}>
             <KeyboardAwareScrollView>
               <View style={styles.header}>
@@ -75,7 +70,8 @@ export default function Index() {
                 <View style={styles.formAction}>
                   <TouchableOpacity
                     onPress={() => {
-                      showDetail();
+                      console.log('press!');
+                      setLogin(true)
                     }}>
                     <View style={styles.wechatBtn}>
                       <Text style={styles.btnText}>微信登陆</Text>
@@ -203,12 +199,10 @@ const styles = StyleSheet.create({
   },
   // wechat button
   wechatBtn: {
-    position: 'absolute',
     marginTop: '1%',
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
-    bottom: -300,
     width: '100%',
     borderRadius: 5,
     paddingVertical: 10,
